@@ -42,6 +42,8 @@ jobs:
         run: pnpm install
 
       - name: Publish
-        run: pnpm publish-github-page
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          pnpm publish-github-page
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
