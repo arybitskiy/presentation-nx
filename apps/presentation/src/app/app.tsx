@@ -15,7 +15,7 @@ export function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <GlobalStyles />
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.REACT_ROUTER_DOM_BASENAME}>
         <Routes>
           <Route path="/slides" element={<Slides />}></Route>
         </Routes>

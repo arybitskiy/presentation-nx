@@ -5,12 +5,14 @@ import viteTsConfigPaths from 'vite-tsconfig-paths';
 
 const isBuild = process.env.NX_TASK_TARGET_TARGET === 'prebuild';
 
+const REACT_ROUTER_DOM_BASENAME = isBuild ? '/presentation-nx' : '/';
+
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/presentation',
 
   ...(isBuild
     ? {
-        base: 'https://arybitskiy.github.io/presentation-nx/',
+        base: 'https://arybitskiy.github.io/',
       }
     : {}),
 
@@ -41,7 +43,7 @@ export default defineConfig({
   // },
 
   define: {
-    'process.env': process.env,
+    'process.env': { ...process.env, REACT_ROUTER_DOM_BASENAME },
   },
 
   test: {
