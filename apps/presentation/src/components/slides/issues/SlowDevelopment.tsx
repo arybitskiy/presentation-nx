@@ -11,6 +11,6 @@ export const SlowDevelopment = () => (
     dx={12}
     ci={13}
   >
-    <h1 align="center">Slow development</h1>
+    <h1>Slow development</h1>
   </Slide>
 );

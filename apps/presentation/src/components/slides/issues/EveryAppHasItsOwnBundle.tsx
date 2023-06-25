@@ -11,6 +11,6 @@ export const EveryAppHasItsOwnBundle = () => (
     dx={2}
     ci={3}
   >
-    <h1 align="center">Every Application Has Its Own Bundle</h1>
+    <h1>Every Application Has Its Own Bundle</h1>
   </Slide>
 );

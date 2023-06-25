@@ -1,6 +1,6 @@
 import { useFirestoreCollectionMutation } from '@react-query-firebase/firestore';
 
-import { slidesCollection } from '../collections';
+// import { slidesCollection } from '../collections';
 
-export const useAddSlide = () =>
-  useFirestoreCollectionMutation(slidesCollection);
+// export const useAddSlide = () =>
+//   useFirestoreCollectionMutation(slidesCollection);

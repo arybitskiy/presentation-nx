@@ -11,6 +11,6 @@ export const HugeCSSBundles = () => (
     dx={5}
     ci={6}
   >
-    <h1 align="left">Huge CSS Bundle Size</h1>
+    <h1>Huge CSS Bundle Size</h1>
   </Slide>
 );

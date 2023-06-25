@@ -14,7 +14,11 @@ export const SlidesContext = createContext<{
   setRenderTo: () => {},
 });
 
-export const SlidesContextProvider = ({ children }) => {
+export const SlidesContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [slides, setSlides] = useState<SlideDocument[]>([]);
   const [renderTo, setRenderTo] = useState<RenderTo>();
 
