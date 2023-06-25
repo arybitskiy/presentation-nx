@@ -14,6 +14,9 @@ dependencies:
   '@mui/lab':
     specifier: 5.0.0-alpha.134
     version: 5.0.0-alpha.134(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.13.6)(@types/react@18.2.13)(react-dom@18.2.0)(react@18.2.0)
+  '@mui/material':
+    specifier: ^5.13.6
+    version: 5.13.6(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.13)(react-dom@18.2.0)(react@18.2.0)
   '@react-query-firebase/firestore':
     specifier: 1.0.0-dev.7
     version: 1.0.0-dev.7(firebase@9.23.0)(react-query@3.39.3)(react@18.2.0)
