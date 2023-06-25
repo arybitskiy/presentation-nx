@@ -3,9 +3,16 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
 
+const isBuild = process.env.NX_TASK_TARGET_TARGET === 'build';
+
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/presentation',
-  base: 'https://arybitskiy.github.io/presentation-nx/',
+
+  ...(isBuild
+    ? {
+        base: 'https://arybitskiy.github.io/presentation-nx/',
+      }
+    : {}),
 
   server: {
     port: 4200,
