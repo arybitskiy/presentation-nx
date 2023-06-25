@@ -49,7 +49,7 @@ const CustomizedDot = (props: DotProps) => {
     //   {props.payload.name}
     // </text>
     <foreignObject x={cx} y={cy} width="1" height="1">
-      <TimelineDot />
+      <TimelineDot variant="filled" color="primary" />
     </foreignObject>
   );
 };

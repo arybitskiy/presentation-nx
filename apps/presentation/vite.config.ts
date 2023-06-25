@@ -5,6 +5,7 @@ import viteTsConfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/presentation',
+  base: 'https://arybitskiy.github.io/presentation-nx/',
 
   server: {
     port: 4200,

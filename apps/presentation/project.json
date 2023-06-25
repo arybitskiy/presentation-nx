@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/presentation"
@@ -19,6 +21,15 @@
           "mode": "production"
         }
       }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm gh-pages -d dist/apps/presentation"
+      },
+      "dependsOn": [
+        "build"
+      ]
     },
     "serve": {
       "executor": "@nx/vite:dev-server",
@@ -54,7 +65,9 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/apps/presentation"],
+      "outputs": [
+        "coverage/apps/presentation"
+      ],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/apps/presentation"
@@ -62,9 +75,13 @@
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/presentation/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "apps/presentation/**/*.{ts,tsx,js,jsx}"
+        ]
       }
     },
     "serve-static": {
