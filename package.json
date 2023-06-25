@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "publish-github-page": "nx publish-ci"
+    "build": "nx build"
   },
   "private": true,
   "homepage": "https://arybitskiy.github.io/presentation-nx/",
