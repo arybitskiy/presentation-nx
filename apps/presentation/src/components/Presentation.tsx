@@ -9,11 +9,14 @@ import {
   Dot,
   DotProps,
   ResponsiveContainer,
+  LineChart,
+  Legend,
+  Line,
 } from 'recharts';
 import { Button } from '@mui/material';
 import { TimelineDot } from '@mui/lab';
-
-import { useSlides } from '../hooks/useSlides';
+import { useContext } from 'react';
+import { SlidesContext } from './SlidesContextProvider';
 
 const data = [
   {
@@ -54,11 +57,21 @@ const CustomizedDot = (props: DotProps) => {
   );
 };
 
-export const Slides = () => {
+export const Presentation = () => {
+  const { slides } = useContext(SlidesContext);
+
   return (
-    <>
-      <ResponsiveContainer width={8000} height="100%">
-        <AreaChart
+    <ResponsiveContainer width="100%" height="100%">
+      <LineChart data={slides}>
+        <XAxis dataKey="time" />
+        {/* <YAxis dataKey="height" /> */}
+        <Tooltip />
+        <Legend />
+        <Line type="monotone" dataKey="ux" stroke="#be4d25" strokeWidth={2} />
+        <Line type="monotone" dataKey="dx" stroke="#49be25" strokeWidth={2} />
+        <Line type="monotone" dataKey="ci" stroke="#2596be" strokeWidth={2} />
+      </LineChart>
+      {/* <AreaChart
           data={data}
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
@@ -111,8 +124,7 @@ export const Slides = () => {
             animationDuration={3500}
             name="Debelost"
           />
-        </AreaChart>
-      </ResponsiveContainer>
-    </>
+        </AreaChart> */}
+    </ResponsiveContainer>
   );
 };

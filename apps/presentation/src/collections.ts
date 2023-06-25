@@ -1,11 +1,11 @@
 import { collection } from 'firebase/firestore';
 import { firestore } from './app/firebase';
-import { SlideDocument } from './types';
+import { SlideData } from './types';
 
 export const slidesCollection = collection(
   firestore,
   'slides'
-).withConverter<SlideDocument>({
+).withConverter<SlideData>({
   toFirestore: (slide) => {
     return {
       name: slide.name,

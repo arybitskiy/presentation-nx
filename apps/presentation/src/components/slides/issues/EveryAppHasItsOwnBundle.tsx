@@ -1,0 +1,16 @@
+import { SlideType } from '../../../types';
+import { Slide } from '../../Slide';
+
+export const EveryAppHasItsOwnBundle = () => (
+  <Slide
+    type={SlideType.ISSUE}
+    name="Every Application Has Its Own Bundle"
+    time={-8}
+    height={2}
+    ux={1}
+    dx={2}
+    ci={3}
+  >
+    <h1 align="center">Every Application Has Its Own Bundle</h1>
+  </Slide>
+);

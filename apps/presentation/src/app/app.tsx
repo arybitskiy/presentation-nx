@@ -5,9 +5,13 @@ import '@fontsource/roboto/700.css';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { CssBaseline } from '@mui/material';
 
-import { Slides } from '../components/Slides';
+import { SlidesRegistry } from '../components/SlidesRegistry';
 import { GlobalStyles } from './GlobalStyles';
+import { SlidesContextProvider } from '../components/SlidesContextProvider';
+import { SlidesList } from '../components/SlidesList';
+import { Presentation } from '../components/Presentation';
 
 const queryClient = new QueryClient();
 
@@ -15,11 +19,16 @@ export function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <GlobalStyles />
-      <BrowserRouter basename={process.env.REACT_ROUTER_DOM_BASENAME}>
-        <Routes>
-          <Route path="/slides" element={<Slides />}></Route>
-        </Routes>
-      </BrowserRouter>
+      <CssBaseline />
+      <SlidesContextProvider>
+        <SlidesRegistry />
+        <BrowserRouter basename={process.env.REACT_ROUTER_DOM_BASENAME}>
+          <Routes>
+            <Route path="/" element={<Presentation />}></Route>
+            <Route path="/slides/*" element={<SlidesList />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </SlidesContextProvider>
     </QueryClientProvider>
   );
 }
