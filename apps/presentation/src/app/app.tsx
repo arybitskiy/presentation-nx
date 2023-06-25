@@ -1,16 +1,21 @@
-import styled from '@emotion/styled';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
-import NxWelcome from './nx-welcome';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-const StyledApp = styled.div`
-  // Your style here
-`;
+import { Slides } from '../components/Slides';
+import { GlobalStyles } from './GlobalStyles';
+
+const queryClient = new QueryClient();
 
 export function App() {
   return (
-    <StyledApp>
-      <NxWelcome title="presentation" />
-    </StyledApp>
+    <QueryClientProvider client={queryClient}>
+      <GlobalStyles />
+      <Slides />
+    </QueryClientProvider>
   );
 }
 
