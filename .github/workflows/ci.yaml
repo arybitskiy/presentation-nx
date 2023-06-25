@@ -42,4 +42,4 @@ jobs:
         run: pnpm install
 
       - name: Publish
-        run: pnpm publish
+        run: pnpm publish-github-page
