@@ -25,7 +25,16 @@
     "publish": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm gh-pages -d dist/apps/presentation -u 'Aleksy Rybicki<alekso.php@gmail.com>'"
+        "command": "pnpm gh-pages -d dist/apps/presentation"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "publish-ci": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm gh-pages -d dist/apps/presentation -u 'github-actions-bot <support+actions@github.com>'"
       },
       "dependsOn": [
         "build"
