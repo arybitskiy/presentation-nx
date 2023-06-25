@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
 
-const isBuild = process.env.NX_TASK_TARGET_TARGET === 'build';
+const isBuild = process.env.NX_TASK_TARGET_TARGET === 'prebuild';
 
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/presentation',
