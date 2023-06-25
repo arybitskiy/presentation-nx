@@ -12,7 +12,7 @@ export default defineConfig({
 
   ...(isBuild
     ? {
-        base: 'https://arybitskiy.github.io/',
+        base: `https://arybitskiy.github.io${REACT_ROUTER_DOM_BASENAME}/`,
       }
     : {}),
 

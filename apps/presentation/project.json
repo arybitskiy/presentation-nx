@@ -44,15 +44,15 @@
       "executor": "@nx/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "presentation:build"
+        "buildTarget": "presentation:prebuild"
       },
       "configurations": {
         "development": {
-          "buildTarget": "presentation:build:development",
+          "buildTarget": "presentation:prebuild:development",
           "hmr": true
         },
         "production": {
-          "buildTarget": "presentation:build:production",
+          "buildTarget": "presentation:prebuild:production",
           "hmr": false
         }
       }
