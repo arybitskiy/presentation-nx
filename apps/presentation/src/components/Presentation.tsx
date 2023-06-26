@@ -13,10 +13,11 @@ import {
   Legend,
   Line,
 } from 'recharts';
-import { Button } from '@mui/material';
+import { Card, CardContent, Typography } from '@mui/material';
 import { TimelineDot } from '@mui/lab';
 import { useContext } from 'react';
 import { SlidesContext } from './SlidesContextProvider';
+import styled from '@emotion/styled';
 
 const data = [
   {
@@ -35,24 +36,45 @@ const data = [
   },
 ];
 
-const CustomizedDot = (props: DotProps) => {
-  const { cx, cy } = props;
-  console.log(props);
+const StyledTimelineDot = styled(TimelineDot)`
+  position: relative;
+  left: -6px;
+  top: -18px;
+`;
+
+const StyledCard = styled(Card)`
+  transform: translate(-50%, -100%);
+`;
+
+const CustomizedDot = (
+  props: DotProps & {
+    payload: { name: string };
+    dataKey: string;
+    stroke: string;
+  }
+) => {
+  const {
+    cx,
+    cy,
+    dataKey,
+    payload: { name },
+    stroke,
+  } = props;
+
+  const content =
+    dataKey === 'tooltip' ? (
+      <StyledCard sx={{ minWidth: 200 }}>
+        <CardContent>
+          <Typography>{name}</Typography>
+        </CardContent>
+      </StyledCard>
+    ) : (
+      <StyledTimelineDot variant="filled" style={{ backgroundColor: stroke }} />
+    );
+
   return (
-    // <text>asdasd</text>
-    // <circle
-    //   cx={cx - 10}
-    //   cy={cy - 10}
-    //   r={25}
-    //   stroke="black"
-    //   strokeWidth={3}
-    //   fill="red"
-    // ><text>asd</text></circle>
-    // <text x={cx} y={cy}>
-    //   {props.payload.name}
-    // </text>
     <foreignObject x={cx} y={cy} width="1" height="1">
-      <TimelineDot variant="filled" color="primary" />
+      {content}
     </foreignObject>
   );
 };
@@ -61,15 +83,51 @@ export const Presentation = () => {
   const { slides } = useContext(SlidesContext);
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <LineChart data={slides}>
+    <ResponsiveContainer width={4000} height="100%">
+      <LineChart
+        data={slides}
+        margin={{ top: 50, right: 200, bottom: 50, left: 200 }}
+      >
         <XAxis dataKey="time" />
         {/* <YAxis dataKey="height" /> */}
-        <Tooltip />
+        {/* <Tooltip /> */}
         <Legend />
-        <Line type="monotone" dataKey="ux" stroke="#be4d25" strokeWidth={2} />
-        <Line type="monotone" dataKey="dx" stroke="#49be25" strokeWidth={2} />
-        <Line type="monotone" dataKey="ci" stroke="#2596be" strokeWidth={2} />
+        <Line
+          type="monotone"
+          dataKey="ux"
+          stroke="#be4d25"
+          strokeWidth={2}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          dot={<CustomizedDot />}
+        />
+        <Line
+          type="monotone"
+          dataKey="dx"
+          stroke="#49be25"
+          strokeWidth={2}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          dot={<CustomizedDot />}
+        />
+        <Line
+          type="monotone"
+          dataKey="ci"
+          stroke="#2596be"
+          strokeWidth={2}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          dot={<CustomizedDot />}
+        />
+        <Line
+          type="monotone"
+          dataKey="tooltip"
+          stroke="#FFFFFF00"
+          strokeWidth={2}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          dot={<CustomizedDot />}
+        />
       </LineChart>
       {/* <AreaChart
           data={data}

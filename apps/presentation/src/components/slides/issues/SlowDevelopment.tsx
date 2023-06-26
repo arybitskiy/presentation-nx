@@ -10,6 +10,7 @@ export const SlowDevelopment = () => (
     ux={11}
     dx={12}
     ci={13}
+    tooltip={14}
   >
     <h1>Slow development</h1>
   </Slide>

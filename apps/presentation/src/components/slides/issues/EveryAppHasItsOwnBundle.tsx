@@ -10,6 +10,7 @@ export const EveryAppHasItsOwnBundle = () => (
     ux={1}
     dx={2}
     ci={3}
+    tooltip={4}
   >
     <h1>Every Application Has Its Own Bundle</h1>
   </Slide>

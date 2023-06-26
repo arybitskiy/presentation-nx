@@ -18,6 +18,7 @@ export interface SlideData {
   ux: number;
   dx: number;
   ci: number;
+  tooltip: number;
 }
 
 export interface SlideDocument extends SlideData {

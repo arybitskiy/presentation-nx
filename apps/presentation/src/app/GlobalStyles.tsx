@@ -13,6 +13,10 @@ body {
 foreignObject {
   overflow: visible;
 }
+
+.recharts-default-legend {
+  position: fixed;
+}
 `}
   />
 );

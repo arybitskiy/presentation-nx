@@ -10,6 +10,7 @@ export const HugeJSBundles = () => (
     ux={7}
     dx={8}
     ci={9}
+    tooltip={10}
   >
     <h1>Huge JS Bundle Size</h1>
   </Slide>
