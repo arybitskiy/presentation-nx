@@ -1,5 +1,7 @@
 const multiplier = 2;
 const initial = 10;
+const strokeWidth = 10;
+const disposition = 1;
 
 export const EPOCHS = [
   'explanation' as const,
@@ -10,34 +12,34 @@ export const EPOCHS = [
 export const SLIDES_STATS_CONFIG = [
   {
     multiplier: multiplier,
-    initial: initial + 0.2,
+    initial: initial + disposition,
     color: '#be4d25',
     title: 'User Experience',
-    strokeWidth: 5,
+    strokeWidth,
     dataKey: 'ux' as const,
   },
   {
     multiplier: multiplier,
-    initial: initial + 0.4,
+    initial: initial + disposition * 2,
     color: '#49be25',
     title: 'Development Experience',
-    strokeWidth: 5,
+    strokeWidth,
     dataKey: 'dx' as const,
   },
   {
     multiplier: multiplier,
-    initial: initial + 0.6,
+    initial: initial + disposition * 3,
     color: '#2596be',
     title: 'Continuous Integration',
-    strokeWidth: 5,
+    strokeWidth,
     dataKey: 'ci' as const,
   },
   {
     multiplier: multiplier,
-    initial: initial + 0.8,
+    initial: initial + disposition * 4,
     color: '#000000',
     title: 'Company Impact',
-    strokeWidth: 5,
+    strokeWidth,
     dataKey: 'co' as const,
   },
 ];

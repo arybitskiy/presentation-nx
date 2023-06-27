@@ -33,8 +33,8 @@ import { useSetPresentation } from '../hooks/useSetPresentation';
 
 const StyledTimelineDot = styled(TimelineDot)`
   position: relative;
-  left: -6px;
-  top: -18px;
+  left: -11px;
+  top: -24px;
 `;
 
 const StyledCard = styled(Card)`
@@ -66,12 +66,14 @@ const CustomizedDot = (
   const content =
     dataKey === 'tooltip' ? (
       <StyledCard
-        sx={{ minWidth: 200 }}
+        sx={{ minWidth: 300 }}
         onClick={isAdmin ? undefined : () => renderModal(id)}
         id={`slide-${id}`}
       >
         <CardContent>
-          <Typography>{name}</Typography>
+          <Typography variant="h4" style={{ fontWeight: 'bold' }}>
+            {name}
+          </Typography>
         </CardContent>
         {isAdmin && (
           <CardActions>
@@ -106,6 +108,7 @@ const CustomizedDot = (
                   ({ dataKey: dataKeyCur }) => dataKey === dataKeyCur
                 )?.color || stroke
               : stroke,
+          borderWidth: '8px',
         }}
       />
     ) : null;
@@ -147,27 +150,40 @@ export const Presentation = ({ admin }: PresentationProps) => {
       >
         <defs>
           <linearGradient id="colorExplanation" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="30%" stopColor="#8884d8" stopOpacity={0.8} />
+            <stop offset="90%" stopColor="#8884d8" stopOpacity={0.8} />
             <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
           </linearGradient>
           <linearGradient id="colorIssue" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="30%" stopColor="#ca829d" stopOpacity={0.8} />
+            <stop offset="90%" stopColor="#ca829d" stopOpacity={0.8} />
             <stop offset="95%" stopColor="#ca829d" stopOpacity={0} />
           </linearGradient>
           <linearGradient id="colorResolution" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="30%" stopColor="#82ca9d" stopOpacity={0.8} />
+            <stop offset="90%" stopColor="#82ca9d" stopOpacity={0.8} />
             <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
           </linearGradient>
         </defs>
         <XAxis
           dataKey="time"
-          tickFormatter={(value) =>
-            value >= 0 ? `${value} month${value > 1 ? 's' : ''}` : ''
-          }
+          tickFormatter={(value) => {
+            if (value === 0) {
+              return "We're here";
+            }
+            return value >= 0 ? `${value} month${value > 1 ? 's' : ''}` : '';
+          }}
+          ticks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
+          style={{ fontSize: '2rem', fontWeight: 'bold' }}
         />
         <YAxis dataKey="yaxis" axisLine={false} tick={false} />
         {/* <Tooltip /> */}
-        <Legend />
+        <Legend
+          iconSize={16}
+          wrapperStyle={{ fontSize: '2rem', fontWeight: 'bold' }}
+          payload={SLIDES_STATS_CONFIG.map(({ title, color }) => ({
+            value: title,
+            color,
+            type: 'circle',
+          }))}
+        />
         <Area
           type="monotone"
           dataKey="explanation"

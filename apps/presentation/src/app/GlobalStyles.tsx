@@ -17,6 +17,10 @@ foreignObject {
 .recharts-default-legend {
   position: fixed;
 }
+
+.recharts-legend-item-text {
+  vertical-align: middle;
+}
 `}
   />
 );

@@ -12,6 +12,6 @@ export const HugeCSSBundles = () => (
     co={-1}
     issue={1}
   >
-    <h1>Huge CSS Bundle Size</h1>
+    <h1>asd</h1>
   </Slide>
 );

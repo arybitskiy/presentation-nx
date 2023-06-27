@@ -7,7 +7,7 @@ export const State1 = () => (
     name="Intro to presentation"
     time={-100}
     explanation={1}
-    yaxis={-5}
+    yaxis={-10}
   >
     <h1>State 1</h1>
   </Slide>
