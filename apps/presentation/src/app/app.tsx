@@ -25,6 +25,7 @@ export function App() {
         <BrowserRouter basename={process.env.REACT_ROUTER_DOM_BASENAME}>
           <Routes>
             <Route path="/" element={<Presentation />}></Route>
+            <Route path="/admin" element={<Presentation admin />}></Route>
             <Route path="/slides/*" element={<SlidesList />}></Route>
           </Routes>
         </BrowserRouter>

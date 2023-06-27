@@ -6,11 +6,9 @@ export const SlowDevelopment = () => (
     type={SlideType.ISSUE}
     name="Slow development"
     time={-7}
-    height={2}
-    ux={11}
-    dx={12}
-    ci={13}
-    tooltip={14}
+    dx={-1}
+    co={-1}
+    issue={1}
   >
     <h1>Slow development</h1>
   </Slide>

@@ -1,16 +1,15 @@
 import { SlideType } from '../../../types';
 import { Slide } from '../../Slide';
 
-export const EveryAppHasItsOwnBundle = () => (
+export const SlowCI = () => (
   <Slide
     type={SlideType.ISSUE}
-    name="Every Application Has Its Own Bundle"
-    time={-8}
-    ux={-1}
+    name="Slow Continuous Integration"
+    time={-2}
     ci={-1}
     co={-1}
     issue={1}
   >
-    <h1>Every Application Has Its Own Bundle</h1>
+    <h1>Slow Continuous Integration</h1>
   </Slide>
 );

@@ -14,13 +14,27 @@ export interface SlideData {
   name: string;
   type: SlideType;
   time: number;
-  height: number;
-  ux: number;
-  dx: number;
-  ci: number;
-  tooltip: number;
+  ux?: number;
+  dx?: number;
+  ci?: number;
+  co?: number;
+  showDotux?: boolean;
+  showDotdx?: boolean;
+  showDotci?: boolean;
+  showDotco?: boolean;
+  tooltip?: number;
+  explanation?: number;
+  issue?: number;
+  resolution?: number;
+  yaxis?: number;
 }
 
 export interface SlideDocument extends SlideData {
   id: string;
+}
+
+export interface PresentationData {
+  visibleIds: string[];
+  openModal?: string;
+  scrollIntoView?: string;
 }

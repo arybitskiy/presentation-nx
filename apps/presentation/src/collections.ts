@@ -1,21 +1,8 @@
-import { collection } from 'firebase/firestore';
+import { CollectionReference, collection } from 'firebase/firestore';
 import { firestore } from './app/firebase';
-import { SlideData } from './types';
+import { PresentationData } from './types';
 
-// export const slidesCollection = collection(
-//   firestore,
-//   'slides'
-// ).withConverter<SlideData>({
-//   toFirestore: (slide) => {
-//     return {
-//       name: slide.name,
-//     };
-//   },
-//   fromFirestore: (snapshot, options) => {
-//     const data = snapshot.data(options);
-//     return {
-//       id: snapshot.id,
-//       name: data.name,
-//     };
-//   },
-// });
+export const presentationsCollection = collection(
+  firestore,
+  'presentations'
+) as CollectionReference<PresentationData>;
