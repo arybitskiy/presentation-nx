@@ -11,12 +11,18 @@ import { EachRepositoryHasItsOwnConfig } from './slides/issues/EachRepositoryHas
 import { NoUnifiedLibrariesAcrossCompany } from './slides/issues/NoUnifiedLibrariesAcrossCompany';
 import { NoTrackingForeRepositoriesAndDependencies } from './slides/issues/NoTrackingForeRepositoriesAndDependencies';
 import { SlowCI } from './slides/issues/SlowCI';
-import { ConstantlyFailingCI } from './slides/issues/ConstantlyFailingCI';
+import { CodeAnalysisTools } from './slides/issues/CodeAnalysisTools';
 
 import { Resolution } from './slides/Resolution';
 import { SingleRepositroyForConfiguration } from './slides/actions/SingleRepositroyForConfiguration';
-import { ConfigEncapsulated } from './slides/actions/ConfigEncapsulated';
-import { ConfigPropagation } from './slides/actions/ConfigPropagation';
+import { SingleRepositoryForMigrationScript } from './slides/actions/SingleRepositoryForMigrationScript';
+import { MigrationOfAllCompanyRepositories } from './slides/actions/MigrationOfAllCompanyRepositories';
+import { NxCloudOnPremises } from './slides/actions/NxCloudOnPremises';
+import { SingleRepositroyForSharedLibraries } from './slides/actions/SingleRepositroyForSharedLibraries';
+import { SingleRepositoryForMultiPageApplication } from './slides/actions/SingleRepositoryForMultiPageApplication';
+
+import { SingleRepositroyForConfigurationImpact } from './slides/impacts/SingleRepositroyForConfigurationImpact';
+import { MigrationOfAllCompanyRepositoriesImpact } from './slides/impacts/MigrationOfAllCompanyRepositoriesImpact';
 
 export const SlidesRegistry = () => {
   return (
@@ -35,12 +41,17 @@ export const SlidesRegistry = () => {
       <NoUnifiedLibrariesAcrossCompany />
       <NoTrackingForeRepositoriesAndDependencies />
       <SlowCI />
-      <ConstantlyFailingCI />
+      <CodeAnalysisTools />
       {/* ACTIONS */}
       <Resolution />
       <SingleRepositroyForConfiguration />
-      <ConfigEncapsulated />
-      <ConfigPropagation />
+      <SingleRepositroyForConfigurationImpact />
+      <SingleRepositoryForMigrationScript />
+      <MigrationOfAllCompanyRepositories />
+      <MigrationOfAllCompanyRepositoriesImpact />
+      <NxCloudOnPremises />
+      <SingleRepositoryForMultiPageApplication />
+      <SingleRepositroyForSharedLibraries />
     </>
   );
 };

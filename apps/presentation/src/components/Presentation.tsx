@@ -188,7 +188,7 @@ export const Presentation = ({ admin }: PresentationProps) => {
         {/* <Tooltip /> */}
         <Legend
           iconSize={16}
-          wrapperStyle={{ fontSize: '1.5rem', fontWeight: 'bold' }}
+          wrapperStyle={{ fontSize: '1.4rem', fontWeight: 'bold' }}
           payload={SLIDES_STATS_CONFIG.map(({ title, color }) => ({
             value: title,
             color,

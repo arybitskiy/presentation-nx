@@ -11,6 +11,10 @@ export const EveryAppHasItsOwnBundle = () => (
     co={-1}
     issue={1}
   >
-    <h1>Every Application Has Its Own Bundle</h1>
+    <h2>We have separate build for each application.</h2>
+    <h2>
+      As a result we have separate FEKit and other libraries js/css in each
+      application
+    </h2>
   </Slide>
 );

@@ -10,6 +10,13 @@ export const ComplicatedBuildConfig = () => (
     co={-1}
     issue={1}
   >
-    <h1>Complicated Build Config</h1>
+    <h2>
+      We have a lot of configs that hard to detect what is broken or not and how
+      it works
+    </h2>
+    <h2>
+      For example we should manually add language json anytime we add new
+      package if that package has translations, that could be automated
+    </h2>
   </Slide>
 );

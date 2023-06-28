@@ -10,6 +10,8 @@ export const SlowDevelopment = () => (
     co={-1}
     issue={1}
   >
-    <h1>Slow development</h1>
+    <h2>At least 1 minute for CSS reload because of FEKit size</h2>
+    <h2>No Hot Module Replacement for JS</h2>
+    <h2>Need to restart dev server to see changes in language files</h2>
   </Slide>
 );
