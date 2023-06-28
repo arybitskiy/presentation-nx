@@ -27,6 +27,10 @@ export interface SlideData {
   issue?: number;
   resolution?: number;
   yaxis?: number;
+  uxDiff?: number;
+  dxDiff?: number;
+  ciDiff?: number;
+  coDiff?: number;
 }
 
 export interface SlideDocument extends SlideData {

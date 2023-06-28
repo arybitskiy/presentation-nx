@@ -103,13 +103,17 @@ export const SlidesContextProvider = ({
 
       if (isAdmin || presentation?.visibleIds?.includes(slide.id)) {
         SLIDES_STATS_CONFIG.forEach((stat) => {
+          const prevValue = values[stat.dataKey] ?? stat.initial;
           values[stat.dataKey] =
-            (values[stat.dataKey] ?? stat.initial) +
-            (slide[stat.dataKey] ?? 0) * stat.multiplier;
+            prevValue + (slide[stat.dataKey] ?? 0) * stat.multiplier;
           min = Math.min(min ?? values[stat.dataKey], values[stat.dataKey]);
           max = Math.max(max ?? values[stat.dataKey], values[stat.dataKey]);
           values[`showDot${stat.dataKey}`] =
             typeof slide[stat.dataKey] !== 'undefined' || isFirst || isLast;
+          values[`${stat.dataKey}Diff`] =
+            typeof slide[stat.dataKey] === 'undefined'
+              ? undefined
+              : (slide[stat.dataKey] ?? 0) * stat.multiplier * 25;
           // if (min <= 3) {
           values.tooltip = slide.tooltip ?? max + 0;
           // } else {

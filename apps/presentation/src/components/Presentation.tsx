@@ -32,6 +32,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { SlidesContext } from './SlidesContextProvider';
 import { SlideDocument } from '../types';
 import { useSetPresentation } from '../hooks/useSetPresentation';
+import { Stats } from './Stats';
 
 const StyledTimelineDot = styled(TimelineDot)`
   position: relative;
@@ -78,11 +79,7 @@ const CustomizedDot = (
           </Typography>
         </CardContent>
         <CardActions>
-          {SLIDES_STATS_CONFIG.map(({ themeColor, shortLabel }) => (
-            <Badge badgeContent={shortLabel} color={themeColor}>
-              <Chip color={themeColor} label="+50%" />
-            </Badge>
-          ))}
+          <Stats {...payload} />
         </CardActions>
         {isAdmin && (
           <CardActions>
@@ -252,60 +249,6 @@ export const Presentation = ({ admin }: PresentationProps) => {
           dot={<CustomizedDot />}
         />
       </ComposedChart>
-      {/* <AreaChart
-          data={data}
-          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-        >
-          <XAxis dataKey="name">
-            <Label value="Višina (cm)" offset={0} position="insideBottom" />
-          </XAxis>
-          <YAxis>
-            <Label
-              value="Teža (kg)"
-              angle={-90}
-              position="insideLeft"
-              textAnchor="middle"
-            />
-          </YAxis>
-          <CartesianGrid strokeDasharray="3 3" />
-          <Area
-            type="monotone"
-            dataKey="underweight"
-            stackId="1"
-            stroke="#8884d8"
-            fill="#7d7dff"
-            animationDuration={3500}
-            name="Podhranjenost"
-            dot={<CustomizedDot />}
-          />
-          <Area
-            type="monotone"
-            dataKey="normal"
-            stackId="1"
-            stroke="#82ca9d"
-            fill="#7dff7d"
-            animationDuration={3500}
-            name="Normalna teža"
-          />
-          <Area
-            type="monotone"
-            dataKey="overweight"
-            stackId="1"
-            stroke="#ffc658"
-            fill="#ffff7d"
-            animationDuration={3500}
-            name="Prekomerna teža"
-          />
-          <Area
-            type="monotone"
-            dataKey="obese"
-            stackId="1"
-            stroke="#ffc658"
-            fill="#ff7d7d"
-            animationDuration={3500}
-            name="Debelost"
-          />
-        </AreaChart> */}
     </ResponsiveContainer>
   ) : null;
 };

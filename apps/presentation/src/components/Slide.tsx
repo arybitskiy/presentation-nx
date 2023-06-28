@@ -8,10 +8,12 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
+  DialogActions,
 } from '@mui/material';
 
 import { SlidesContext } from './SlidesContextProvider';
 import { RenderTo, SlideData } from '../types';
+import { Stats } from './Stats';
 
 interface SlideProps extends SlideData {
   children: React.ReactNode;
@@ -20,7 +22,7 @@ interface SlideProps extends SlideData {
 export const Slide = (props: SlideProps) => {
   const { name, children, ...rest } = props;
 
-  const { addSlide, renderTo, renderId, closeModal } =
+  const { addSlide, renderTo, renderId, closeModal, slides } =
     useContext(SlidesContext);
 
   const id = kebabCase(name);
@@ -50,9 +52,23 @@ export const Slide = (props: SlideProps) => {
   }
 
   if (renderTo === RenderTo.MODAL && renderId === id) {
+    const slide = slides.find((slide) => slide.id === id);
     return (
       <Dialog open scroll="paper" onClose={closeModal} fullWidth maxWidth="xl">
-        <DialogTitle>{name}</DialogTitle>
+        <DialogTitle>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}
+          >
+            <div>{name}</div>
+            <div>
+              <Stats {...slide} />
+            </div>
+          </div>
+        </DialogTitle>
         <DialogContent>{renderedChildren}</DialogContent>
       </Dialog>
     );
