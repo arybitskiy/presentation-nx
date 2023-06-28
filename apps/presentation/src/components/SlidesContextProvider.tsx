@@ -18,6 +18,7 @@ export const SlidesContext = createContext<{
   setIsAdmin: (isAdmin: boolean) => void;
   visibleIds?: string[];
   scrollIntoView?: string;
+  slidesLength: number;
 }>({
   slides: [],
   addSlide: () => {},
@@ -26,6 +27,7 @@ export const SlidesContext = createContext<{
   closeModal: () => {},
   isAdmin: false,
   setIsAdmin: () => {},
+  slidesLength: 0,
 });
 
 export const SlidesContextProvider = ({
@@ -80,8 +82,12 @@ export const SlidesContextProvider = ({
 
   const calculatedSlides = useMemo(() => {
     const sortedSlides = slides
-      .filter(({ id }) => isAdmin || presentation?.visibleIds?.includes(id))
+      // .filter(({ id }) => isAdmin || presentation?.visibleIds?.includes(id))
       .sort((a, b) => a.time - b.time);
+
+    const filteredSlides = sortedSlides.filter(
+      ({ id }) => isAdmin || presentation?.visibleIds?.includes(id)
+    );
     const values = {} as any;
     const prevEpochs = {} as any;
 
@@ -89,50 +95,64 @@ export const SlidesContextProvider = ({
       let min = Number.MAX_VALUE;
       let max = Number.MIN_VALUE;
       const isFirst = index === 0;
-      const isLast = index === sortedSlides.length - 1;
+      const isLast = index === filteredSlides.length - 1;
 
       EPOCHS.forEach((epoch) => {
         delete values[epoch];
       });
 
-      SLIDES_STATS_CONFIG.forEach((stat) => {
-        values[stat.dataKey] =
-          (values[stat.dataKey] ?? stat.initial) +
-          (slide[stat.dataKey] ?? 0) * stat.multiplier;
-        min = Math.min(min ?? values[stat.dataKey], values[stat.dataKey]);
-        max = Math.max(max ?? values[stat.dataKey], values[stat.dataKey]);
-        values[`showDot${stat.dataKey}`] =
-          typeof slide[stat.dataKey] !== 'undefined' || isFirst || isLast;
-        // if (min <= 3) {
-        values.tooltip = slide.tooltip ?? max + 0;
-        // } else {
-        // values.tooltip = slide.tooltip ?? min - 0;
-        // }
-      });
+      if (isAdmin || presentation?.visibleIds?.includes(slide.id)) {
+        SLIDES_STATS_CONFIG.forEach((stat) => {
+          values[stat.dataKey] =
+            (values[stat.dataKey] ?? stat.initial) +
+            (slide[stat.dataKey] ?? 0) * stat.multiplier;
+          min = Math.min(min ?? values[stat.dataKey], values[stat.dataKey]);
+          max = Math.max(max ?? values[stat.dataKey], values[stat.dataKey]);
+          values[`showDot${stat.dataKey}`] =
+            typeof slide[stat.dataKey] !== 'undefined' || isFirst || isLast;
+          // if (min <= 3) {
+          values.tooltip = slide.tooltip ?? max + 0;
+          // } else {
+          // values.tooltip = slide.tooltip ?? min - 0;
+          // }
+        });
 
-      EPOCHS.forEach((epoch) => {
-        if (typeof (slide as any)[epoch] === 'number') {
-          values[epoch] = max + 100;
-        }
-      });
+        EPOCHS.forEach((epoch) => {
+          if (typeof (slide as any)[epoch] === 'number') {
+            values[epoch] = max + 100;
+          }
+        });
+      } else {
+        SLIDES_STATS_CONFIG.forEach((stat) => {
+          delete values[stat.dataKey];
+          delete values[`showDot${stat.dataKey}`];
+        });
+        delete values.tooltip;
+      }
 
       const ret = {
-        ...slide,
+        id: slide.id,
+        name: slide.name,
+        time: slide.time,
+        type: slide.type,
+        yaxis: slide.yaxis,
         ...values,
       };
 
-      EPOCHS.forEach((epoch) => {
-        if (
-          typeof ret[epoch] !== 'number' &&
-          typeof prevEpochs[epoch] === 'number'
-        ) {
-          ret[epoch] = max + 100;
-        }
-        delete prevEpochs[epoch];
-        if (typeof (slide as any)[epoch] === 'number') {
-          prevEpochs[epoch] = max;
-        }
-      });
+      if (isAdmin || presentation?.visibleIds?.includes(slide.id)) {
+        EPOCHS.forEach((epoch) => {
+          if (
+            typeof ret[epoch] !== 'number' &&
+            typeof prevEpochs[epoch] === 'number'
+          ) {
+            ret[epoch] = max + 100;
+          }
+          delete prevEpochs[epoch];
+          if (typeof (slide as any)[epoch] === 'number') {
+            prevEpochs[epoch] = max;
+          }
+        });
+      }
 
       return ret;
     });
@@ -152,6 +172,7 @@ export const SlidesContextProvider = ({
         setIsAdmin,
         visibleIds: presentation?.visibleIds,
         scrollIntoView: presentation?.scrollIntoView,
+        slidesLength: slides.length,
       }}
     >
       {children}

@@ -21,6 +21,10 @@ foreignObject {
 .recharts-legend-item-text {
   vertical-align: middle;
 }
+
+img {
+  max-width: 100%;
+}
 `}
   />
 );

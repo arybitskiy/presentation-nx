@@ -15,9 +15,11 @@ import {
   ComposedChart,
 } from 'recharts';
 import {
+  Badge,
   Card,
   CardActions,
   CardContent,
+  Chip,
   IconButton,
   Typography,
 } from '@mui/material';
@@ -75,6 +77,13 @@ const CustomizedDot = (
             {name}
           </Typography>
         </CardContent>
+        <CardActions>
+          {SLIDES_STATS_CONFIG.map(({ themeColor, shortLabel }) => (
+            <Badge badgeContent={shortLabel} color={themeColor}>
+              <Chip color={themeColor} label="+50%" />
+            </Badge>
+          ))}
+        </CardActions>
         {isAdmin && (
           <CardActions>
             {isVisible ? (
@@ -125,7 +134,8 @@ interface PresentationProps {
 }
 
 export const Presentation = ({ admin }: PresentationProps) => {
-  const { slides, setIsAdmin, scrollIntoView } = useContext(SlidesContext);
+  const { slides, setIsAdmin, scrollIntoView, slidesLength } =
+    useContext(SlidesContext);
 
   useEffect(() => {
     setIsAdmin(Boolean(admin));
@@ -171,13 +181,14 @@ export const Presentation = ({ admin }: PresentationProps) => {
             return value >= 0 ? `${value} month${value > 1 ? 's' : ''}` : '';
           }}
           ticks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
-          style={{ fontSize: '2rem', fontWeight: 'bold' }}
+          style={{ fontSize: '1.5rem', fontWeight: 'bold' }}
+          tickCount={2}
         />
         <YAxis dataKey="yaxis" axisLine={false} tick={false} />
         {/* <Tooltip /> */}
         <Legend
           iconSize={16}
-          wrapperStyle={{ fontSize: '2rem', fontWeight: 'bold' }}
+          wrapperStyle={{ fontSize: '1.5rem', fontWeight: 'bold' }}
           payload={SLIDES_STATS_CONFIG.map(({ title, color }) => ({
             value: title,
             color,
