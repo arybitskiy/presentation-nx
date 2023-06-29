@@ -142,19 +142,28 @@ interface PresentationProps {
 }
 
 export const Presentation = ({ admin }: PresentationProps) => {
-  const { slides, setIsAdmin, scrollIntoView } = useContext(SlidesContext);
+  const { slides, setIsAdmin, scrollIntoView, renderModal, closeModal } =
+    useContext(SlidesContext);
 
   useEffect(() => {
     setIsAdmin(Boolean(admin));
     if (scrollIntoView && !admin) {
-      const element = document.getElementById(scrollIntoView);
-      element?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-        inline: 'center',
-      });
+      closeModal();
+      setTimeout(() => {
+        const element = document.getElementById(scrollIntoView);
+        element?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+          inline: 'center',
+        });
+        setTimeout(() => {
+          renderModal(scrollIntoView.replace(/^slide-/, ''));
+        }, 500);
+      }, 500);
+    } else {
+      closeModal();
     }
-  }, [admin, setIsAdmin, scrollIntoView]);
+  }, [admin, setIsAdmin, scrollIntoView, renderModal, closeModal]);
 
   return (
     <>

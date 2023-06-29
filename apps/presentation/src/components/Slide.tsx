@@ -54,7 +54,7 @@ export const Slide = (props: SlideProps) => {
   if (renderTo === RenderTo.MODAL && renderId === id) {
     const slide = slides.find((slide) => slide.id === id);
     return (
-      <Dialog open scroll="paper" onClose={closeModal} fullWidth maxWidth="xl">
+      <Dialog open scroll="paper" fullWidth maxWidth="xl">
         <DialogTitle>
           <div
             style={{

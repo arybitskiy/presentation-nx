@@ -20,6 +20,21 @@ export const useSetPresentation = () => {
           return;
         }
         transaction.update(presentation, {
+          visibleIds: visibleIds,
+          scrollIntoView: '',
+        });
+      });
+      await runTransaction(firestore, async (transaction) => {
+        const sfDoc = await transaction.get(presentation);
+        if (!sfDoc.exists()) {
+          throw new Error('Document does not exist!');
+        }
+
+        const visibleIds = sfDoc.data().visibleIds;
+        if (visibleIds.includes(slideId)) {
+          return;
+        }
+        transaction.update(presentation, {
           visibleIds: [...visibleIds, slideId],
           scrollIntoView: `slide-${slideId}`,
         });
