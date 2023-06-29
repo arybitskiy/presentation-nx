@@ -158,7 +158,7 @@ export const Presentation = ({ admin }: PresentationProps) => {
         });
         setTimeout(() => {
           renderModal(scrollIntoView.replace(/^slide-/, ''));
-        }, 500);
+        }, 2000);
       }, 500);
     } else {
       closeModal();

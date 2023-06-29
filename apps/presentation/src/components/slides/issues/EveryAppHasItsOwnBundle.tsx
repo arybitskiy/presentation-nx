@@ -16,7 +16,7 @@ export const EveryAppHasItsOwnBundle = () => (
       application
     </h2>
     <h2>
-      When use moves between pages - on every page he loads separate copy of
+      When user moves between pages - on every page he loads separate copy of
       FEKit, also versions of FEKit might be different: on each page he loads
       763KB of CSS, at least 1MB of JavaScript
     </h2>

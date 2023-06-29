@@ -18,7 +18,7 @@ export const SingleRepositroyForConfigurationImpact = () => (
       development load
     </h2>
     <h2>
-      Easy generation of new project / easy extendinsion of existing project
+      Easy generation of new project / easy extension of existing project
     </h2>
   </Slide>
 );
