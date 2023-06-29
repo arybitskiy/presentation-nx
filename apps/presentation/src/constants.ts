@@ -1,7 +1,7 @@
 const multiplier = 1;
 const initial = 10;
 const strokeWidth = 10;
-const disposition = 0.7;
+const disposition = 4;
 
 export const EPOCHS = [
   'explanation' as const,
