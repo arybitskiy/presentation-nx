@@ -6,8 +6,6 @@ export const SingleRepositoryForMigrationScript = () => (
     type={SlideType.ACTION}
     name="Single Repository for Migration Script"
     time={2}
-    dx={1}
-    co={1}
     resolution={1}
   >
     <h2>1. Analysis of any repository</h2>

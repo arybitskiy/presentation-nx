@@ -7,7 +7,7 @@ export const NoTrackingForeRepositoriesAndDependencies = () => (
     name="No Tracking For Repositories And Dependencies"
     time={-3}
     dx={-1}
-    co={-1}
+    co={-2}
     issue={1}
   >
     <h2>There is no way to tell what changes are in repositories</h2>

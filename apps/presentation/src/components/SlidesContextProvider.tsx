@@ -113,7 +113,7 @@ export const SlidesContextProvider = ({
           values[`${stat.dataKey}Diff`] =
             typeof slide[stat.dataKey] === 'undefined'
               ? undefined
-              : (slide[stat.dataKey] ?? 0) * stat.multiplier * 25;
+              : (slide[stat.dataKey] ?? 0) * stat.multiplier * 10;
           // if (min <= 3) {
           values.tooltip = slide.tooltip ?? max + 0;
           // } else {

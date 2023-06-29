@@ -6,8 +6,6 @@ export const SingleRepositroyForConfiguration = () => (
     type={SlideType.ACTION}
     name="Single Repository for Configuration"
     time={1}
-    dx={1}
-    co={1}
     resolution={1}
   >
     <h2>We will have single repository for all build and execution scripts</h2>

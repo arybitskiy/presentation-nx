@@ -11,7 +11,7 @@ export const State2 = () => (
     ci={1}
     co={1}
     explanation={1}
-    yaxis={30}
+    yaxis={200}
   >
     <h1>State 2</h1>
   </Slide>

@@ -69,7 +69,7 @@ const CustomizedDot = (
   const content =
     dataKey === 'tooltip' ? (
       <StyledCard
-        sx={{ minWidth: 300 }}
+        sx={{ minWidth: 340 }}
         onClick={isAdmin ? undefined : () => renderModal(id)}
         id={`slide-${id}`}
       >
@@ -131,8 +131,7 @@ interface PresentationProps {
 }
 
 export const Presentation = ({ admin }: PresentationProps) => {
-  const { slides, setIsAdmin, scrollIntoView, slidesLength } =
-    useContext(SlidesContext);
+  const { slides, setIsAdmin, scrollIntoView } = useContext(SlidesContext);
 
   useEffect(() => {
     setIsAdmin(Boolean(admin));
@@ -149,7 +148,7 @@ export const Presentation = ({ admin }: PresentationProps) => {
   return slides.length ? (
     <ResponsiveContainer
       width={WIDTH_PER_SLIDE * (slides.length || 1)}
-      height="100%"
+      height={4000}
     >
       <ComposedChart
         data={slides}

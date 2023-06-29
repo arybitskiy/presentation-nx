@@ -9,10 +9,10 @@ export const HugeJSBundles = () => (
     type={SlideType.ISSUE}
     name="Huge JS Bundle Size"
     time={-9}
-    ux={-1}
-    dx={-1}
-    co={-1}
-    ci={-1}
+    ux={-5}
+    dx={-5}
+    co={-5}
+    ci={-5}
     issue={1}
   >
     <h2>Every @ctct dependency is generated as UMD package</h2>

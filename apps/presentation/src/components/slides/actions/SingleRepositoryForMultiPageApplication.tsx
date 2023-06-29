@@ -6,8 +6,8 @@ export const SingleRepositoryForMultiPageApplication = () => (
     type={SlideType.ACTION}
     name="Single Repository for Multi Page Application"
     time={6}
-    dx={1}
-    co={1}
+    ux={40}
+    co={40}
     resolution={1}
   >
     <h2>1. All applications will be exported as libraries</h2>

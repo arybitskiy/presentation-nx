@@ -6,8 +6,9 @@ export const SingleRepositroyForSharedLibraries = () => (
     type={SlideType.ACTION}
     name="Single Repository for Shared Libraries"
     time={7}
-    dx={1}
-    co={1}
+    dx={20}
+    ux={20}
+    co={20}
     resolution={1}
   >
     <h2>

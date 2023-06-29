@@ -6,9 +6,9 @@ export const NoUnifiedLibrariesAcrossCompany = () => (
     type={SlideType.ISSUE}
     name="No Unified Libraries Across Company"
     time={-4}
-    ux={-1}
-    dx={-1}
-    co={-1}
+    ux={-5}
+    dx={-5}
+    co={-5}
     issue={1}
   >
     <h2>There is no unified policy for libraries</h2>

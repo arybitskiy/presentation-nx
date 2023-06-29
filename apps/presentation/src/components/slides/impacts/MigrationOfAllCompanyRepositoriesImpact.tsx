@@ -6,8 +6,10 @@ export const MigrationOfAllCompanyRepositoriesImpact = () => (
     type={SlideType.IMPACT}
     name="Result: Migration of All Company Repositories"
     time={4}
-    dx={1}
-    co={1}
+    dx={30}
+    ux={30}
+    ci={30}
+    co={30}
     resolution={1}
   >
     <h2>

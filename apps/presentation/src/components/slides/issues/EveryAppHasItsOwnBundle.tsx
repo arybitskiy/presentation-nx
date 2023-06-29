@@ -6,9 +6,9 @@ export const EveryAppHasItsOwnBundle = () => (
     type={SlideType.ISSUE}
     name="Every Application Has Its Own Bundle"
     time={-8}
-    ux={-1}
-    ci={-1}
-    co={-1}
+    ux={-5}
+    ci={-5}
+    co={-5}
     issue={1}
   >
     <h2>We have separate build for each application.</h2>

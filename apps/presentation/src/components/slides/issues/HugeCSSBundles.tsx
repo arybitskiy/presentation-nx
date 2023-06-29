@@ -7,10 +7,10 @@ export const HugeCSSBundles = () => (
     type={SlideType.ISSUE}
     name="Huge CSS Bundle Size"
     time={-10}
-    ux={-1}
-    dx={-1}
-    ci={-1}
-    co={-1}
+    ux={-2}
+    dx={-3}
+    ci={-2}
+    co={-2}
     issue={1}
   >
     <h2>FEKit has 763KB</h2>

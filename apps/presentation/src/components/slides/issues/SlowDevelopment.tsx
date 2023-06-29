@@ -6,8 +6,9 @@ export const SlowDevelopment = () => (
     type={SlideType.ISSUE}
     name="Slow development"
     time={-7}
-    dx={-1}
-    co={-1}
+    dx={-3}
+    co={-5}
+    ux={-5}
     issue={1}
   >
     <h2>At least 1 minute for CSS reload because of FEKit size</h2>

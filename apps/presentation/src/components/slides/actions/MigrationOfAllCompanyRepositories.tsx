@@ -6,8 +6,6 @@ export const MigrationOfAllCompanyRepositories = () => (
     type={SlideType.ACTION}
     name="Migration Of All Company Repositories"
     time={3}
-    dx={1}
-    co={1}
     resolution={1}
   >
     <h2>1. Start from applications</h2>

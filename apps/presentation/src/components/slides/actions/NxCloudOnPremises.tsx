@@ -11,9 +11,9 @@ export const NxCloudOnPremises = () => (
     type={SlideType.ACTION}
     name="Nx Cloud On Premises"
     time={5}
-    dx={1}
-    co={1}
-    ci={1}
+    dx={30}
+    co={30}
+    ci={30}
     resolution={1}
   >
     <h2>

@@ -6,8 +6,8 @@ export const SingleRepositroyForConfigurationImpact = () => (
     type={SlideType.IMPACT}
     name="Result: Single Repository for Configuration"
     time={1}
-    dx={1}
-    co={1}
+    dx={3}
+    co={2}
     resolution={1}
   >
     <h2>
