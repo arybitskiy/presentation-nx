@@ -148,7 +148,7 @@ export const Presentation = ({ admin }: PresentationProps) => {
   return slides.length ? (
     <ResponsiveContainer
       width={WIDTH_PER_SLIDE * (slides.length || 1)}
-      height={4000}
+      height="100%"
     >
       <ComposedChart
         data={slides}
