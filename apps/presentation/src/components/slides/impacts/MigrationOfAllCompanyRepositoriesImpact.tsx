@@ -1,6 +1,8 @@
 import { SlideType } from '../../../types';
 import { Slide } from '../../Slide';
 
+import image1 from './Screenshot 2023-06-29 at 7.51.31 PM.png';
+
 export const MigrationOfAllCompanyRepositoriesImpact = () => (
   <Slide
     type={SlideType.IMPACT}
@@ -23,5 +25,7 @@ export const MigrationOfAllCompanyRepositoriesImpact = () => (
     <h2>Hot module replacement for JS, CSS and language files</h2>
     <h2>Conventional commits and CHANGELOG generation</h2>
     <h2>No transpilling needed for build, so it will be fast</h2>
+    <h2>Fixed checkmarx issues for dependencies</h2>
+    <img src={image1} />
   </Slide>
 );
