@@ -8,9 +8,9 @@ export const SlowCI = () => (
     type={SlideType.ISSUE}
     name="Slow Continuous Integration"
     time={-2}
-    dx={-3}
-    ci={-3}
-    co={-5}
+    dx={-2}
+    ci={-2}
+    co={-3}
     issue={1}
   >
     <h2>Our CI is very slow and constantly failing</h2>

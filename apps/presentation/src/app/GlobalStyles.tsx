@@ -17,6 +17,7 @@ foreignObject {
 .recharts-default-legend {
   position: fixed;
   left: 20px;
+  bottom: 20px;
 }
 
 .recharts-legend-item-text {

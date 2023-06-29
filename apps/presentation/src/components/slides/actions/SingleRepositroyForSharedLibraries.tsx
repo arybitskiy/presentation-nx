@@ -4,11 +4,11 @@ import { Slide } from '../../Slide';
 export const SingleRepositroyForSharedLibraries = () => (
   <Slide
     type={SlideType.ACTION}
-    name="Single Repository for Shared Libraries"
+    name="6. Single Repository for Shared Libraries"
     time={7}
-    dx={20}
-    ux={20}
-    co={20}
+    dx={5}
+    ux={5}
+    co={5}
     resolution={1}
   >
     <h2>

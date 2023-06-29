@@ -123,7 +123,7 @@ export const SlidesContextProvider = ({
 
         EPOCHS.forEach((epoch) => {
           if (typeof (slide as any)[epoch] === 'number') {
-            values[epoch] = max + 100;
+            values[epoch] = max + 40;
           }
         });
       } else {
@@ -149,7 +149,7 @@ export const SlidesContextProvider = ({
             typeof ret[epoch] !== 'number' &&
             typeof prevEpochs[epoch] === 'number'
           ) {
-            ret[epoch] = max + 100;
+            ret[epoch] = max + 40;
           }
           delete prevEpochs[epoch];
           if (typeof (slide as any)[epoch] === 'number') {

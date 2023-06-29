@@ -9,10 +9,10 @@ export const HugeJSBundles = () => (
     type={SlideType.ISSUE}
     name="Huge JS Bundle Size"
     time={-9}
-    ux={-5}
-    dx={-5}
-    co={-5}
-    ci={-5}
+    ux={-3}
+    dx={-3}
+    co={-3}
+    ci={-1}
     issue={1}
   >
     <h2>Every @ctct dependency is generated as UMD package</h2>
@@ -24,8 +24,8 @@ export const HugeJSBundles = () => (
     <h3>Just a single library in dependency can make build a lot larger</h3>
     <img src={image3} />
     <h2>
-      We have not correct build config for external libraries, as a result in{' '}
-      <i>evm-static</i> we had 6 jQuery libraries in a bundle.
+      We have incorrect build config for external libraries, as a result in{' '}
+      <i>evm-static</i> we have 6 jQuery libraries in a bundle.
     </h2>
     <img src={image4} />
     <h2>We are not using Peer dependencies</h2>

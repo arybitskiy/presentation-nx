@@ -1,5 +1,6 @@
 import { SlideType } from '../../types';
 import { Slide } from '../Slide';
+import { Stats } from '../Stats';
 
 export const State2 = () => (
   <Slide
@@ -11,8 +12,9 @@ export const State2 = () => (
     ci={1}
     co={1}
     explanation={1}
-    yaxis={200}
+    yaxis={30}
   >
-    <h1>State 2</h1>
+    <h1>Chart will show direction of change and value of impact</h1>
+    <Stats uxDiff={100} dxDiff={-100} ciDiff={50} coDiff={-30} />
   </Slide>
 );

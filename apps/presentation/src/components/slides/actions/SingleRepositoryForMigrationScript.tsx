@@ -4,7 +4,7 @@ import { Slide } from '../../Slide';
 export const SingleRepositoryForMigrationScript = () => (
   <Slide
     type={SlideType.ACTION}
-    name="Single Repository for Migration Script"
+    name="2. Single Repository for Migration Script"
     time={2}
     resolution={1}
   >

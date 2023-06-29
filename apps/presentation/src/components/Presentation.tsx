@@ -22,6 +22,7 @@ import {
   Chip,
   IconButton,
   Typography,
+  GlobalStyles as GlobalStylesOriginal,
 } from '@mui/material';
 import { TimelineDot } from '@mui/lab';
 import { Fragment, useContext, useEffect } from 'react';
@@ -43,6 +44,18 @@ const StyledTimelineDot = styled(TimelineDot)`
 const StyledCard = styled(Card)`
   transform: translate(-50%, -130%);
 `;
+
+const UserStyles = () =>
+  process.env.NX_TASK_TARGET_CONFIGURATION === 'development' ? null : (
+    <GlobalStylesOriginal
+      styles={`
+html,
+body {
+  overflow: hidden;
+}
+`}
+    />
+  );
 
 const WIDTH_PER_SLIDE = 400;
 
@@ -78,9 +91,9 @@ const CustomizedDot = (
             {name}
           </Typography>
         </CardContent>
-        <CardActions>
+        <div style={{ padding: 12 }}>
           <Stats {...payload} />
-        </CardActions>
+        </div>
         {isAdmin && (
           <CardActions>
             {isVisible ? (
@@ -145,109 +158,119 @@ export const Presentation = ({ admin }: PresentationProps) => {
     }
   }, [admin, setIsAdmin, scrollIntoView]);
 
-  return slides.length ? (
-    <ResponsiveContainer
-      width={WIDTH_PER_SLIDE * (slides.length || 1)}
-      height="100%"
-    >
-      <ComposedChart
-        data={slides}
-        margin={{ top: 50, right: 200, bottom: 50, left: 200 }}
-      >
-        <defs>
-          <linearGradient id="colorExplanation" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="90%" stopColor="#8884d8" stopOpacity={0.8} />
-            <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
-          </linearGradient>
-          <linearGradient id="colorIssue" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="90%" stopColor="#ca829d" stopOpacity={0.8} />
-            <stop offset="95%" stopColor="#ca829d" stopOpacity={0} />
-          </linearGradient>
-          <linearGradient id="colorResolution" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="90%" stopColor="#82ca9d" stopOpacity={0.8} />
-            <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
-          </linearGradient>
-        </defs>
-        <XAxis
-          dataKey="time"
-          tickFormatter={(value) => {
-            if (value === 0) {
-              return "We're here";
-            }
-            return value >= 0 ? `${value} month${value > 1 ? 's' : ''}` : '';
-          }}
-          ticks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
-          style={{ fontSize: '1.5rem', fontWeight: 'bold' }}
-          tickCount={2}
-        />
-        <YAxis dataKey="yaxis" axisLine={false} tick={false} />
-        {/* <Tooltip /> */}
-        <Legend
-          iconSize={16}
-          wrapperStyle={{ fontSize: '1.4rem', fontWeight: 'bold' }}
-          payload={SLIDES_STATS_CONFIG.map(({ title, color }) => ({
-            value: title,
-            color,
-            type: 'circle',
-          }))}
-        />
-        <Area
-          type="monotone"
-          dataKey="explanation"
-          fill="url(#colorExplanation)"
-          stroke="#FFFFFF00"
-          baseLine={1}
-        />
-        <Area
-          type="monotone"
-          dataKey="issue"
-          fill="url(#colorIssue)"
-          stroke="#FFFFFF00"
-        />
-        <Area
-          type="monotone"
-          dataKey="resolution"
-          fill="url(#colorResolution)"
-          stroke="#FFFFFF00"
-        />
-        {SLIDES_STATS_CONFIG.map(({ color, strokeWidth, dataKey, title }) => (
-          <Fragment key={dataKey}>
-            <Line
+  return (
+    <>
+      {!admin && <UserStyles />}
+      {slides.length ? (
+        <ResponsiveContainer
+          width={WIDTH_PER_SLIDE * (slides.length || 1)}
+          height={admin ? '100%' : 1500}
+        >
+          <ComposedChart
+            data={slides}
+            margin={{ top: 50, right: 200, bottom: 50, left: 200 }}
+          >
+            <defs>
+              <linearGradient id="colorExplanation" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="90%" stopColor="#8884d8" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+              </linearGradient>
+              <linearGradient id="colorIssue" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="90%" stopColor="#ca829d" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#ca829d" stopOpacity={0} />
+              </linearGradient>
+              <linearGradient id="colorResolution" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="90%" stopColor="#82ca9d" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
+              </linearGradient>
+            </defs>
+            <XAxis
+              hide
+              dataKey="time"
+              tickFormatter={(value) => {
+                if (value === 0) {
+                  return "We're here";
+                }
+                return value >= 0
+                  ? `${value} month${value > 1 ? 's' : ''}`
+                  : '';
+              }}
+              ticks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
+              style={{ fontSize: '1.5rem', fontWeight: 'bold' }}
+              tickCount={2}
+            />
+            <YAxis dataKey="yaxis" axisLine={false} tick={false} />
+            {/* <Tooltip /> */}
+            <Legend
+              iconSize={16}
+              wrapperStyle={{ fontSize: '1.4rem', fontWeight: 'bold' }}
+              payload={SLIDES_STATS_CONFIG.map(({ title, color }) => ({
+                value: title,
+                color,
+                type: 'circle',
+              }))}
+            />
+            <Area
               type="monotone"
-              dataKey={dataKey}
+              dataKey="explanation"
+              fill="url(#colorExplanation)"
               stroke="#FFFFFF00"
-              strokeWidth={strokeWidth}
-              name={title}
-              isAnimationActive={false}
-              legendType="none"
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              dot={<CustomizedDot />}
+              baseLine={1}
             />
+            <Area
+              type="monotone"
+              dataKey="issue"
+              fill="url(#colorIssue)"
+              stroke="#FFFFFF00"
+            />
+            <Area
+              type="monotone"
+              dataKey="resolution"
+              fill="url(#colorResolution)"
+              stroke="#FFFFFF00"
+            />
+            {SLIDES_STATS_CONFIG.map(
+              ({ color, strokeWidth, dataKey, title }) => (
+                <Fragment key={dataKey}>
+                  <Line
+                    type="monotone"
+                    dataKey={dataKey}
+                    stroke="#FFFFFF00"
+                    strokeWidth={strokeWidth}
+                    name={title}
+                    isAnimationActive={false}
+                    legendType="none"
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    dot={<CustomizedDot />}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey={dataKey}
+                    stroke={color}
+                    strokeWidth={strokeWidth}
+                    name={title}
+                    isAnimationActive={!admin}
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    dot={<CustomizedDot />}
+                  />
+                </Fragment>
+              )
+            )}
             <Line
               type="monotone"
-              dataKey={dataKey}
-              stroke={color}
-              strokeWidth={strokeWidth}
-              name={title}
-              isAnimationActive={!admin}
+              dataKey="tooltip"
+              stroke="#FFFFFF00"
+              strokeWidth={2}
+              isAnimationActive={false}
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
               dot={<CustomizedDot />}
             />
-          </Fragment>
-        ))}
-        <Line
-          type="monotone"
-          dataKey="tooltip"
-          stroke="#FFFFFF00"
-          strokeWidth={2}
-          isAnimationActive={false}
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          dot={<CustomizedDot />}
-        />
-      </ComposedChart>
-    </ResponsiveContainer>
-  ) : null;
+          </ComposedChart>
+        </ResponsiveContainer>
+      ) : null}
+    </>
+  );
 };

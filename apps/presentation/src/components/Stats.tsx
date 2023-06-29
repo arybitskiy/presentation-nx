@@ -1,5 +1,7 @@
 import { Badge, Chip } from '@mui/material';
 import { SLIDES_STATS_CONFIG } from '../constants';
+import { ArrowDownward, ArrowUpward } from '@mui/icons-material';
+import { times } from 'lodash';
 
 interface StatsProps {
   uxDiff?: number;
@@ -15,9 +17,18 @@ export const Stats = (props: StatsProps) =>
       <Badge
         badgeContent={shortLabel}
         color={themeColor}
-        style={{ margin: '0 6px', display: 'inline-block' }}
+        style={{ margin: '6px', display: 'inline-block' }}
       >
-        <Chip color={themeColor} label={`${diff >= 0 ? '+' : ''}${diff}%`} />
+        <Chip
+          color={themeColor}
+          label={times(Math.abs(Math.round(diff / 10)), (index) =>
+            diff >= 0 ? (
+              <ArrowUpward key={index} />
+            ) : (
+              <ArrowDownward key={index} />
+            )
+          )}
+        />
       </Badge>
     ) : null;
   });

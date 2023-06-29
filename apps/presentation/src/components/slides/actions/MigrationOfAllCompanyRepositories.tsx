@@ -4,7 +4,7 @@ import { Slide } from '../../Slide';
 export const MigrationOfAllCompanyRepositories = () => (
   <Slide
     type={SlideType.ACTION}
-    name="Migration Of All Company Repositories"
+    name="3. Migration Of Company Repositories"
     time={3}
     resolution={1}
   >

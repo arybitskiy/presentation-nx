@@ -7,9 +7,9 @@ export const CodeAnalysisTools = () => (
     type={SlideType.ISSUE}
     name="Code Analysis Tools Do Nothing"
     time={-2}
-    dx={-2}
-    ci={-3}
-    co={-3}
+    dx={-1}
+    ci={-2}
+    co={-2}
     issue={1}
   >
     <h2>Checkmarx constantly failing</h2>

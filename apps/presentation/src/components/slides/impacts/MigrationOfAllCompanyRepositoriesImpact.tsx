@@ -4,12 +4,12 @@ import { Slide } from '../../Slide';
 export const MigrationOfAllCompanyRepositoriesImpact = () => (
   <Slide
     type={SlideType.IMPACT}
-    name="Result: Migration of All Company Repositories"
+    name="Result: Migration of Company Repositories"
     time={4}
-    dx={30}
-    ux={30}
-    ci={30}
-    co={30}
+    dx={5}
+    ux={5}
+    ci={5}
+    co={5}
     resolution={1}
   >
     <h2>

@@ -9,11 +9,11 @@ import image5 from './images/results.png';
 export const NxCloudOnPremises = () => (
   <Slide
     type={SlideType.ACTION}
-    name="Nx Cloud On Premises"
+    name="4. Nx Cloud On Premises"
     time={5}
-    dx={30}
-    co={30}
-    ci={30}
+    dx={5}
+    co={5}
+    ci={5}
     resolution={1}
   >
     <h2>

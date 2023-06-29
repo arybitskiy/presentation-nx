@@ -4,10 +4,10 @@ import { Slide } from '../../Slide';
 export const SingleRepositoryForMultiPageApplication = () => (
   <Slide
     type={SlideType.ACTION}
-    name="Single Repository for Multi Page Application"
+    name="5. Single Repository for Multi Page Application"
     time={6}
-    ux={40}
-    co={40}
+    ux={5}
+    co={5}
     resolution={1}
   >
     <h2>1. All applications will be exported as libraries</h2>
