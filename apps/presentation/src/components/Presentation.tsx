@@ -45,18 +45,16 @@ const StyledCard = styled(Card)`
   transform: translate(-50%, -130%);
 `;
 
-const UserStyles = () =>
-  process.env.NX_TASK_TARGET_CONFIGURATION === 'development' ? null : (
-    <GlobalStylesOriginal
-      styles={`
+const UserStyles = () => (
+  <GlobalStylesOriginal
+    styles={`
 html,
 body {
   overflow: hidden;
 }
 `}
-    />
-  );
-
+  />
+);
 const WIDTH_PER_SLIDE = 400;
 
 const CustomizedDot = (
