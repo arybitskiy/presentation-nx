@@ -50,7 +50,7 @@ const UserStyles = () => (
     styles={`
 html,
 body {
-  overflow: hidden;
+  // overflow: hidden;
 }
 `}
   />
@@ -147,22 +147,22 @@ export const Presentation = ({ admin }: PresentationProps) => {
 
   useEffect(() => {
     setIsAdmin(Boolean(admin));
-    if (scrollIntoView && !admin) {
-      closeModal();
-      setTimeout(() => {
-        const element = document.getElementById(scrollIntoView);
-        element?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',
-          inline: 'center',
-        });
-        setTimeout(() => {
-          renderModal(scrollIntoView.replace(/^slide-/, ''));
-        }, 2000);
-      }, 500);
-    } else {
-      closeModal();
-    }
+    // if (scrollIntoView && !admin) {
+    //   closeModal();
+    //   setTimeout(() => {
+    //     const element = document.getElementById(scrollIntoView);
+    //     element?.scrollIntoView({
+    //       behavior: 'smooth',
+    //       block: 'center',
+    //       inline: 'center',
+    //     });
+    //     setTimeout(() => {
+    //       renderModal(scrollIntoView.replace(/^slide-/, ''));
+    //     }, 2000);
+    //   }, 500);
+    // } else {
+    //   closeModal();
+    // }
   }, [admin, setIsAdmin, scrollIntoView, renderModal, closeModal]);
 
   return (
